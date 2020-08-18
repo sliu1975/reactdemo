@@ -1,0 +1,33 @@
+// 表格配置图标
+.setting {
+  width: 48px;
+  height: 39px;
+  border-radius: 0px 1px 1px 0px;
+  text-align: center;
+  line-height: 39px;
+  cursor: pointer;
+  &:hover {
+    background: rgba(11, 12, 38, 0.08);
+  }
+  :global {
+    .anticon {
+      font-size: 20px;
+      color: rgba(11, 12, 38, 0.65);
+    }
+  }
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popover {
+  :global {
+    .ant-popover-inner-content {
+      max-height: 250px;
+      overflow-y: auto;
+    }
+  }
+}

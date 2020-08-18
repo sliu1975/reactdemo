@@ -1,0 +1,63 @@
+.tree {
+  position: relative;
+  :global {
+    .ant-tree {
+      overflow-y: auto;
+      .ant-tree-treenode {
+        padding: 0;
+      }
+      .ant-tree-treenode-disabled .ant-tree-node-content-wrapper {
+        cursor: default;
+      }
+      // 打开关闭的按钮
+      .ant-tree-switcher {
+        width: 20px;
+        height: 36px;
+        line-height: 36px;
+        color: rgba(11, 12, 38, 0.2);
+      }
+      // 缩进
+      .ant-tree-indent-unit {
+        width: 20px;
+      }
+      .ant-tree-node-content-wrapper {
+        position: relative;
+        padding: 0;
+        line-height: 36px;
+        min-height: 36px;
+        .ant-tree-iconEle {
+          display: flex;
+          align-items: center;
+          width: 20px;
+          height: 36px;
+          line-height: 36px;
+          color: #5053e6;
+          font-size: 20px;
+        }
+      }
+      .ant-tree-title {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding-left: 24px;
+        color: rgba(11, 12, 38, 0.87);
+        user-select: none;
+      }
+    }
+  }
+  .title {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  // 一层目录不显示switcher
+  &.singleTree {
+    :global {
+      .ant-tree-switcher {
+        display: none;
+      }
+    }
+  }
+}

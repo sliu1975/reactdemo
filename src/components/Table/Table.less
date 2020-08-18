@@ -1,0 +1,29 @@
+.table:not(.singleton){
+  :global{
+    .ant-table-thead > tr > th{
+      // background-color: rgba(22,22,64,0.04);
+    }
+
+    //.ant-table-tbody > tr:nth-child(2n) > td{
+    //  background-color: @primaryOpa4;
+    //}
+  }
+}
+
+.singleton{
+  :global{
+    .ant-table{
+      background-color: transparent;
+    }
+    .ant-table-tbody > tr > td{
+      padding:0;
+      border-bottom: none;
+    }
+
+    .ant-table-tbody > tr.ant-table-placeholder:hover > td,
+    .ant-table-tbody > tr.ant-table-row:hover > td{
+      background-color: transparent;
+    }
+
+  }
+}

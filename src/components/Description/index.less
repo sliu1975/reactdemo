@@ -1,0 +1,20 @@
+.item {
+  display: flex;
+  padding-bottom: 26px;
+  line-height: 20px;
+  color: #333;
+  :global {
+    .label {
+      margin-right: 20px;
+      color: rgba(11, 12, 38, 0.65);
+    }
+    .content {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: rgba(11, 12, 38, 0.87);
+      font-weight: 500;
+    }
+  }
+}

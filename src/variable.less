@@ -1,0 +1,65 @@
+@theme-color: #5053E6;
+
+.shadow{
+  box-shadow:0px 2px 16px 0px rgba(15,27,51,0.08);
+  position: relative;
+  z-index: 10;
+}
+
+.card{
+  margin: 20px;
+  padding: 20px;
+  background-color: #fff;
+
+  .cardTitle{
+    position: relative;
+    padding-left: 13px;
+    padding-bottom: 20px;
+    font-size:15px;
+    font-weight:500;
+    color:rgba(15,27,51,0.87);
+    line-height:21px;
+
+    .dot{
+      position: absolute;
+      left: 0;
+      top: 5px;
+      width:5px;
+      height:12px;
+      background:rgba(22,22,64,0.12);
+      border-radius:1px;
+    }
+  }
+}
+
+.modal{
+  :global{
+    .ant-modal-title{
+      position: relative;
+      padding-left: 16px;
+      font-size: 17px;
+      font-weight: 600;
+      color:rgba(22,22,64,0.87);
+
+      &:before{
+        position: absolute;
+        left: 0;
+        top: 3px;
+        content: '';
+        width: 6px;
+        height:16px;
+        background:rgba(22,22,64,0.12);
+        border-radius:1px;
+      }
+    }
+  }
+}
+
+.df{
+  :global(.ant-select-item-option-content){
+    display: flex;
+  }
+  .f1{
+    flex: 1;
+  }
+}

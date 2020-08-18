@@ -1,0 +1,54 @@
+// 表单形式的modal
+.modal {
+  :global {
+    .ant-modal-header {
+      position: relative;
+      padding: 24px 32px 20px;
+      border: 0;
+      &::before {
+        position: absolute;
+        left: 32px;
+        bottom: 0;
+        width: calc(100% - 64px);
+        height: 1px;
+        background: rgba(11, 12, 38, 0.04);
+        content: '';
+      }
+    }
+    .ant-modal-body {
+      padding: 24px 32px;
+    }
+    .ant-modal-footer {
+      position: relative;
+      padding: 20px 32px 24px;
+      border: 0;
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 32px;
+        width: calc(100% - 64px);
+        height: 1px;
+        background: rgba(11, 12, 38, 0.04);
+        content: '';
+      }
+    }
+    // .ant-modal-close {
+    //   display: none;
+    // }
+    .ant-form-item {
+      margin-bottom: 16px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    .ant-form-item-label {
+      > label {
+        color: rgba(11, 12, 38, 0.65);
+        font-size: 15px;
+      }
+    }
+    .ant-form-item-control {
+      flex: 1;
+    }
+  }
+}

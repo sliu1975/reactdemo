@@ -1,0 +1,87 @@
+# https://hub.docker.com/r/library/node/tags/
+image: node:lts-alpine
+
+stages:
+  - build
+  - deploy
+
+# This folder is cached between builds
+# http://docs.gitlab.com/ce/ci/yaml/README.html#cache
+cache:
+  paths:
+    - node_modules/
+    
+variables:
+  SSH: ssh $DEPLOY_SERVER_USER@$DEPLOY_SERVER_IP
+
+build:
+  stage: build
+  
+  only:
+    - /^test-.*$/
+    
+  tags:
+    - web
+    
+  script:
+    - node -v
+    - npm -v
+    - npm config set registry http://47.114.107.176:8000/
+    - npm install
+    - npm run build
+    - cd dist
+    - tar -zcvf ssr-admin-web.tar.gz *
+
+  artifacts:
+    paths:
+      - $SOURCE_DIR
+    expire_in: 5 mins
+
+deploy:
+  stage: deploy
+  
+  only:
+    - /^test-.*$/
+    
+  tags:
+    - web
+    
+  before_script:
+    ##
+    ## Set Mirror
+    ##
+    - sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+    
+    ##
+    ## Install ssh-agent if not already installed, it is required by Docker.
+    ## (change apt-get to yum if you use an RPM-based image)
+    ##
+    - 'which ssh-agent || ( apk update && apk add openssh-client )'
+  
+    ##
+    ## Run ssh-agent (inside the build environment)
+    ##
+    - eval $(ssh-agent -s)
+
+    ##
+    ## Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
+    ## We're using tr to fix line endings which makes ed25519 keys work
+    ## without extra base64 encoding.
+    ## https://gitlab.com/gitlab-examples/ssh-private-key/issues/1#note_48526556
+    ##
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+
+    ##
+    ## Create the SSH directory and give it the right permissions
+    ##
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    
+  script:
+    - scp -r $SOURCE_DIR $DEPLOY_SERVER_USER@$DEPLOY_SERVER_IP:$TARGET_DIR
+    - $SSH rm -rf /$TARGET_DIR/ssr-admin-web
+    - $SSH sleep 10
+    - $SSH mkdir /$TARGET_DIR/ssr-admin-web
+    - $SSH tar -zxvf /$TARGET_DIR/ssr-admin-web.tar.gz -C /$TARGET_DIR/ssr-admin-web

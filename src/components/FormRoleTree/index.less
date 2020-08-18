@@ -1,0 +1,38 @@
+.tree {
+  :global {
+    .ant-tree {
+      .ant-tree-treenode {
+        padding: 0;
+        &:hover {
+          background-color: #f5f5f5;
+        }
+        &.ant-tree-treenode-selected {
+          background-color: #f0f2ff;
+        }
+      }
+      .ant-tree-treenode-disabled .ant-tree-node-content-wrapper {
+        cursor: default;
+      }
+      // 打开关闭的按钮
+      .ant-tree-switcher {
+        width: 20px;
+        height: 36px;
+        line-height: 36px;
+        color: rgba(11, 12, 38, 0.2);
+      }
+      .ant-tree-checkbox {
+        margin-top: 10px;
+      }
+      // 缩进
+      .ant-tree-indent-unit {
+        width: 20px;
+      }
+      .ant-tree-node-content-wrapper {
+        position: relative;
+        padding: 0;
+        line-height: 36px;
+        min-height: 36px;
+      }
+    }
+  }
+}
