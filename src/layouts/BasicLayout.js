@@ -44,7 +44,7 @@ const BasicLayout = (props) => {
           style={collapsed ? { paddingLeft: 80 } : { paddingLeft: 180 }}
         >
           {/* <Authorized user={user} location={location}> */}
-            {props.children}
+          {props.children}
           {/* </Authorized> */}
         </Content>
       </Layout>

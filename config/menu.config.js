@@ -3,11 +3,11 @@ const menu = [
     name: '数据共享',
     path: '/boostshare',
     children: [
-      // {
-      //   name: '概览',
-      //   path: '/boostshare/overview',
-      //   icon: 'sider-overview'
-      // },
+      {
+        name: '列表',
+        path: '/boostshare/list',
+        icon: 'sider-overview'
+      },
       {
         name: '协查事务管理',
         path: '/boostshare/case',
