@@ -1,6 +1,6 @@
 # umi-boilerplate
 
-> 杭州趣链科技有限公司--创新业务部&供应链金融部 前端项目模板
+> 
 
 这是一个基于 [UMI](https://umijs.org) 的项目模板。
 
